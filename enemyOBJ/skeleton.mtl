@@ -1,0 +1,72 @@
+# Blender MTL File: 'main file.blend'
+# Material Count: 5
+
+newmtl Mechanism_1
+Ns 199.999995
+Ka 1.000000 1.000000 1.000000
+Kd 0.094347 0.273831 0.175547
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\Mechanism_1_Normal_OpenGL.png
+map_Kd Textures\Mechanism_1_BaseColor.png
+map_Ns Textures\Mechanism_1_Roughness.png
+refl Textures\Mechanism_1_Metallic.png
+
+newmtl Mechanism_2
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.097629 0.246195 0.070750
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\Mechanism_2_Normal_OpenGL.png
+map_Kd Textures\Mechanism_2_BaseColor.png
+map_Ns Textures\Mechanism_2_Roughness.png
+refl Textures\Mechanism_2_Metallic.png
+
+newmtl Skeleton
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.226584 0.165633 0.077846
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\Skeleton_Normal_OpenGL.png
+map_Kd Textures\Skeleton_BaseColor.png
+map_Ns Textures\Skeleton_Roughness.png
+refl Textures\Skeleton_Metallic.png
+
+newmtl Skull
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.157433 0.052740 0.038229
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\Skull_Normal_OpenGL.png
+map_Kd Textures\Skull_BaseColor.png
+map_Ns Textures\Skull_Roughness.png
+refl Textures\Skull_Metallic.png
+
+newmtl White_emission
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 1.000000 1.000000 1.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\White emission_Normal_OpenGL.png
+map_Kd Textures\White emission_BaseColor.png
+map_Ns Textures\White emission_Roughness.png
+refl Textures\White emission_Metallic.png

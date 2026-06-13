@@ -1,0 +1,283 @@
+
+#ui-container {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    pointer-events: none;
+    z-index: 5;
+}
+.hp-box {
+    width: 400px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+.hp-label {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+.hp-bar-bg {
+    width: 100%;
+    height: 20px;
+    background: #555;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.hp-bar-fill {
+    height: 100%;
+    width: 100%;
+    background: #ff3333;
+    transition: width 0.1s ease-out;
+}
+#enemy-hp-fill {
+    background: #ffcc00;
+}
+
+#game-container {
+    position: relative;
+    width: 1280px;
+    height: 720px;
+    margin: 0 auto;
+}
+#webgl {
+    display: block;
+}
+.overlay-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1280px;
+    height: 720px;
+    background: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    color: #ffffff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    box-sizing: border-box;
+}
+.hidden {
+    display: none !important;
+}
+
+.game-title {
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 6px;
+    color: #00ffff;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    margin-bottom: 50px;
+    line-height: 1.4;
+}
+.game-title .subtitle {
+    font-size: 24px;
+    color: #ff3333;
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
+    letter-spacing: 3px;
+}
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.menu-btn {
+    width: 250px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background: transparent;
+    border: 2px solid #00ffff;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.2s ease;
+}
+.menu-btn:hover {
+    background: #00ffff;
+    color: #000000;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+#controls-panel h2 {
+    color: #ffcc00;
+    margin-bottom: 30px;
+}
+.controls-content {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #555;
+    padding: 30px;
+    border-radius: 8px;
+    width: 600px;
+    line-height: 2;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+.controls-content strong {
+    color: #00ffff;
+}
+
+#intro-panel {
+    perspective: 400px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.skip-tip {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #666;
+    font-size: 14px;
+}
+#crawl-container {
+    position: relative;
+    width: 800px;
+    height: 1000px;
+    bottom: 0;
+    transform: rotateX(25deg);
+    transform-origin: 50% 100%;
+}
+#crawl-text {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    text-align: justify;
+    color: #ffcc00;
+    font-size: 24px;
+    line-height: 1.8;
+    font-weight: bold;
+    animation: crawlAnimation 35s linear forwards; 
+}
+.crawl-title {
+    font-size: 40px;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+.crawl-footer {
+    text-align: center;
+    color: #00ffff;
+    margin-top: 40px;
+    font-size: 26px;
+}
+@keyframes crawlAnimation {
+    0% { top: 500px; }
+    100% { top: -1500px; }
+}
+
+.game-over-mask {
+    background: rgba(0, 0, 0, 0.75) !important; 
+    backdrop-filter: blur(3px); 
+    z-index: 20; 
+}
+
+.lose-title {
+    font-size: 80px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    color: #ff3333;
+    letter-spacing: 10px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #ff0000, 
+                 0 0 30px #ff3333, 
+                 0 0 50px #ff3333;
+    animation: pulse 2s infinite alternate;
+}
+
+.lose-subtitle {
+    font-size: 18px;
+    color: #888888;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+}
+
+.retry-btn {
+    border-color: #ff3333 !important;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.2) !important;
+}
+.retry-btn:hover {
+    background: #ff3333 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 25px rgba(255, 51, 51, 0.8) !important;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); text-shadow: 0 0 10px #ff0000, 0 0 30px #ff3333; }
+    100% { transform: scale(1.03); text-shadow: 0 0 15px #ff0000, 0 0 40px #ff3333, 0 0 60px #ff0000; }
+}
+
+.win-title {
+    font-size: 80px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    color: #00ffff; 
+    letter-spacing: 10px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #0088ff, 
+                 0 0 30px #00ffff, 
+                 0 0 50px #00ffff;
+    animation: winPulse 2s infinite alternate;
+}
+
+.win-subtitle {
+    font-size: 18px;
+    color: #888888;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+}
+
+.win-btn {
+    border-color: #00ffff !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2) !important;
+}
+.win-btn:hover {
+    background: #00ffff !important;
+    color: #000000 !important;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8) !important;
+}
+
+@keyframes winPulse {
+    0% { transform: scale(1); text-shadow: 0 0 10px #0088ff, 0 0 30px #00ffff; }
+    100% { transform: scale(1.03); text-shadow: 0 0 15px #00ffff, 0 0 40px #00ffff, 0 0 60px #0088ff; }
+}
+
+.menu-btn:disabled {
+    background: rgba(128, 128, 128, 0.2) !important;
+    color: #888888 !important;
+    border-color: #555555 !important;
+    cursor: not-allowed !important; 
+    box-shadow: none !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+.loading-dots {
+    display: inline-block;
+    width: 0px;
+    text-align: left;
+    vertical-align: bottom;
+    overflow: hidden;
+    animation: dotAnimation 2s infinite steps(4); 
+}
+
+.loading-dots::after {
+    content: "...";
+}
+
+@keyframes dotAnimation {
+    0%   { width: 0ch; }   /* 顯示：Loading */
+    25%  { width: 1ch; }   /* 顯示：Loading. */
+    50%  { width: 2ch; }   /* 顯示：Loading.. */
+    75%  { width: 3ch; }   /* 顯示：Loading... */
+    100% { width: 0ch; }   /* 回到初始 */
+}

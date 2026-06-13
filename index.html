@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Graphics Final Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="main()">
+    <div id="game-container">
+        <canvas id="webgl" width="1280" height="720">
+            Please use a browser that support "canvas"
+        </canvas>
+
+        <div id="ui-container" class="hidden">
+            <div class="hp-box">
+                <div class="hp-label">PLAYER HP</div>
+                <div class="hp-bar-bg">
+                    <div id="player-hp-fill" class="hp-bar-fill"></div>
+                </div>
+            </div>
+            <div class="hp-box" style="text-align: right;">
+                <div class="hp-label">ENEMY HP</div>
+                <div class="hp-bar-bg">
+                    <div id="enemy-hp-fill" class="hp-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-menu" class="overlay-screen">
+            <h1 class="game-title">虛擬邊境：最後的編譯<br><span class="subtitle">The Last Compile</span></h1>
+            <p class="audio-hint">[點擊畫面任意處開啟背景音樂]</p>
+            <div class="menu-buttons">
+                <button id="start-game-btn" class="menu-btn" onclick="startGameIntro()" disabled>
+                Loading<span class="loading-dots"></span>
+                </button>
+                <button class="menu-btn" onclick="showControls()">操作說明</button>
+            </div>
+        </div>
+
+        <div id="controls-panel" class="overlay-screen hidden">
+            <h2>系統操作指引 (OPERATIONAL GUIDE)</h2>
+            <div class="controls-content">
+                <p><strong>【角色移動】</strong></p>
+                <ul>
+                    <li><span>W / S / A / D</span> —— 依當前相機視角進行前、後、左、右水平移動。</li>
+                </ul>
+
+                <p><strong>【視角與鏡頭控制】</strong></p>
+                <ul>
+                    <li><span>滑鼠移動</span> —— 旋轉鏡頭，環繞觀察戰場。</li>
+                    <li><span>滑鼠滾輪滾動</span> —— 放大或縮小鏡頭（調整與角色的距離 / Zoom In & Out）。</li>
+                    <li><span>按住 Z 鍵</span> —— 切換旋轉軸向（放開 Z 鍵時，移動滑鼠會改變相機視角；按住 Z 鍵時，可鎖定特定軸向或停止相機特定旋轉）。</li>
+                </ul>
+
+                <p><strong>【戰鬥指令】</strong></p>
+                <ul>
+                    <li><span>滑鼠左鍵</span> —— 發動攻擊！每次攻擊具有單次傷害判定，可對敵人造成代碼破壞。在第一次攻擊結束階段再次點擊觸發第二段攻擊。</li>
+                </ul>
+            </div>
+            <button class="menu-btn" onclick="hideControls()">返回主選單</button>
+        </div>
+
+        <div id="intro-panel" class="overlay-screen hidden">
+            <div class="skip-tip">點擊任意處可跳過前情提要</div>
+            <div id="crawl-container">
+                <div id="crawl-text">
+                    <p class="crawl-title">前情提要</p>
+                    <p>核心網路……正在崩潰。</p>
+                    <p>西元 3088 年，人類將所有意識與文明記憶上傳至名為『極樂網絡（Aether-Net）』的超大型伺服器中。</p>
+                    <p>然而，一場未知來源的毀滅性病毒——『蝕損程式（The Erosion）』席捲了整個虛擬世界。</p>
+                    <p>這片由低多邊形與代碼構築的荒涼核心區，是伺服器最後的防火牆邊境。</p>
+                    <p>你，是網絡中最後存活的系統防衛階層（Player）。</p>
+                    <p>在你眼前的，是已經被病毒完全吞噬、意識格式化，並化身為鋼鐵巨獸的核心樞紐守衛（Enemy）。</p>
+                    <p>守衛手中的數據核心，記錄著重啟整個人類文明的終極密鑰（The Root Key）。牠的指令已被病毒篡改，唯一的目標就是抹殺你，並將整個世界徹底格式化。</p>
+                    <p>在這裡，沒有妥協，無法溝通。</p>
+                    <p>數據的代碼在燃燒，天空的貼圖在崩解。</p>
+                    <p>為了奪回密鑰、為了讓人類文明在現實中甦醒，你必須在核心完全崩潰之前，用擊敗這具被病毒控制的軀殼！</p>
+                    <p class="crawl-footer">連結已建立。戰鬥，是唯一的編譯手段。</p>
+                </div>
+            </div>
+        </div>
+        <div id="lose-screen" class="overlay-screen hidden game-over-mask">
+            <h1 class="lose-title">YOU LOSE</h1>
+            <p class="lose-subtitle">核心系統已損毀．數據格式化失敗</p>
+            <button class="menu-btn retry-btn" onclick="resetGame()">重新編譯 (RETRY)</button>
+            <button class="menu-btn retry-btn" onclick="backToMenu()">返回主選單</button>
+        </div>
+        <div id="win-screen" class="overlay-screen hidden game-over-mask">
+            <h1 class="win-title">YOU WIN</h1>
+            <p class="win-subtitle">核心程序重啟成功．密鑰已成功下載</p>
+            <button class="menu-btn win-btn" onclick="resetGame()">再次編譯 (PLAY AGAIN)</button>
+            <button class="menu-btn win-btn" onclick="backToMenu()">返回主選單</button>
+        </div>
+    </div>
+
+    <script src="base.js"></script>
+    <script src="cuon-matrix.js"></script>
+    <script src="skybox.js"></script>
+    <script src="reflectiveCube.js"></script>
+    <script src="loadModel.js"></script>
+    <script src="player.js"></script>
+    <script src="enemy.js"></script>
+    <script src="WebGLtest.js"></script>
+</body>
+</html>
